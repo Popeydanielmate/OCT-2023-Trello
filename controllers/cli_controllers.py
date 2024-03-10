@@ -34,5 +34,3 @@ def seed_tables():
     
     print("Tables seeded")
     
-    
-    
