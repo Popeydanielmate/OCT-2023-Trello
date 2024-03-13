@@ -3,6 +3,7 @@ from flask import Blueprint
 from init import  db, bcrypt
 from model.user import User
 from model.card import Card
+from model.comment import Comment
 
 
 db_commands = Blueprint('db', __name__)
@@ -70,6 +71,32 @@ def seed_tables():
     ]
     
     db.session.add_all(cards)
+    
+    comments = [
+        Comment(
+            message="Comment 1",
+            user=users[0],
+            card=cards[0]
+        ),
+        Comment(
+            message="Comment 2",
+            user=users[0],
+            card=cards[2]
+            
+        ),
+        Comment(
+            message="Comment 3",
+            user=users[1],
+            card=cards[3]
+        ),
+        Comment(
+            message="Comment 4",
+            user=users[1],
+            card=cards[2]
+        )
+    ]
+    
+    db.session.add_all(comments)
      
     db.session.commit()
     
